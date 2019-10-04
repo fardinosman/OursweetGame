@@ -1,12 +1,29 @@
-﻿@model OursweetGame.Models.Person
-    @*//container*@
+﻿@model List<OursweetGame.Models.Human>
+@*//container*@
 <h1>Game Characters</h1>
 <br />
 
-Name: <h1>@ViewBag.Name</h1>
+@*Name: <h1>@ViewBag.Name</h1>
 
-Age: <h1>@ViewBag.Age</h1>
-Job: <h1>@ViewBag.Job</h1>
+    Age: <h1>@ViewBag.Age</h1>
+    Job: <h1>@ViewBag.Job</h1>*@
 
 @*access the container using @Model*@
-Reading From Mode : @Model.Name.ToString();
+
+
+@foreach (var item in Model)
+{
+<div class="jumbotron">
+    <ul class="list-group">
+        <li class="list-group-item list-group-item-success col-md-2">Game Characters</li>
+
+
+        <li class="list-group-item list-group-item col-md-2">@item.ID</li>
+        <li class="list-group-item list-group-item col-md-2">@item.Name</li>
+        <li class="list-group-item list-group-item col-md-2">@item.Job</li>
+
+    </ul>
+
+</div>
+
+}

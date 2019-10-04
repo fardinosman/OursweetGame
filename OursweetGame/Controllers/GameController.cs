@@ -9,9 +9,6 @@ namespace OursweetGame.Controllers
 {
     public class GameController : Controller
     {
-    
-       
-       
 
         public ActionResult Index()
         {
@@ -30,10 +27,6 @@ namespace OursweetGame.Controllers
             OursweetGame.Models.Human human = new Human();
             human.Name = Name;
             human.Job = Job;
-
-
-
-
             ViewBag.Age = Age.ToString();
             ViewBag.Job = Job;
 
@@ -47,10 +40,10 @@ namespace OursweetGame.Controllers
         public ActionResult DisplayCharacter()
         {
 
-            
-            //ViewBag.Name = df.Name;
-           
-            return View("DisplayCharacter");
+            PersonEntities entities = new PersonEntities();
+            var d = entities.Human.ToList();
+
+            return View("DisplayCharacter",d);
 
            
         }
