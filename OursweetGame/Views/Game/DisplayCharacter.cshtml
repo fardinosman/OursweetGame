@@ -1,0 +1,12 @@
+﻿@model OursweetGame.Models.Person
+    @*//container*@
+<h1>Game Characters</h1>
+<br />
+
+Name: <h1>@ViewBag.Name</h1>
+
+Age: <h1>@ViewBag.Age</h1>
+Job: <h1>@ViewBag.Job</h1>
+
+@*access the container using @Model*@
+Reading From Mode : @Model.Name.ToString();
