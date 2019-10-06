@@ -13,10 +13,10 @@ namespace OursweetGame.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class PersonEntities : DbContext
+    public partial class GameDatabaseEntities : DbContext
     {
-        public PersonEntities()
-            : base("name=PersonEntities")
+        public GameDatabaseEntities()
+            : base("name=GameDatabaseEntities")
         {
         }
     
@@ -25,6 +25,6 @@ namespace OursweetGame.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Human> Human { get; set; }
+        public virtual DbSet<Person> Person { get; set; }
     }
 }

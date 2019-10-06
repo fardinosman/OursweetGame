@@ -1,7 +1,12 @@
-﻿@model List<OursweetGame.Models.Human>
+﻿@model List<OursweetGame.Models.Person>
 @*//container*@
-<h1>Game Characters</h1>
+<h1><a href="/game/index">Go To Main</a> </h1>
+<h1><a href="/game/CreateCharacter">Create Character</a> </h1>
+<h1><a href="/game/KillCharacter">Delete Character</a> </h1>
+<h1>Game Chcters</h1>
 <br />
+
+
 
 @*Name: <h1>@ViewBag.Name</h1>
 
@@ -13,17 +18,20 @@
 
 @foreach (var item in Model)
 {
-<div class="jumbotron">
-    <ul class="list-group">
-        <li class="list-group-item list-group-item-success col-md-2">Game Characters</li>
+    <div class="jumbotron">
+     
+        <ul class="list-group">
+            <li class="list-group-item list-group-item-success col-md-2">Game Characters</li>
 
+            <li class="list-group-item list-group-item col-md-1">@item.ID </li>
+            <li class="list-group-item list-group-item col-md-1">@item.Name </li>
+            <li class="list-group-item list-group-item col-md-1">@item.Job </li>
+            <li class="list-group-item list-group-item col-md-1">@item.Age </li>
+            <li class="list-group-item list-group-item col-md-1"><a href="/Game/EditCharacter?ID=@item.ID">Edit</a></li>
+            <li class="list-group-item list-group-item col-md-1"><a href="/Game/KillCharacter?ID=@item.ID">Delete</a></li>
 
-        <li class="list-group-item list-group-item col-md-2">@item.ID</li>
-        <li class="list-group-item list-group-item col-md-2">@item.Name</li>
-        <li class="list-group-item list-group-item col-md-2">@item.Job</li>
+        </ul>
 
-    </ul>
-
-</div>
+    </div>
 
 }

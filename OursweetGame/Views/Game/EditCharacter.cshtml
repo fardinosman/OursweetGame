@@ -1,0 +1,55 @@
+﻿
+@model OursweetGame.Models.Person
+
+<h1>Edit Character</h1>
+
+<br />
+<br />
+@*<form action="/Game/ProcessCreateCharacter" method="post">
+
+        Name of Character: <input type="text" id="Name" name="Name" />
+        <br />
+        Character Age: <input type="number" id="Age"  name="Age"/>
+       <br />
+        Character Job <input type="text" id="Job" name="Job"  />
+        <br />
+        <input type="submit" value="Create Character"/>
+
+
+    </form>*@
+
+
+<div class="jumbotron">
+
+    <form action="/Game/EditCharacter" method="post">
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <label for="Name">Name</label>
+                <input type="hidden" class="form-control" id="ID" name="ID" value="@Model.ID">
+                <br />
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label for="Name">Name</label>
+                    <input type="text" class="form-control" id="Name" name="Name" value="@Model.Name">
+                    <br />
+                </div>
+
+                <div class="form-group col-md-12">
+                    <label for="Age">Age</label>
+                    <input type="number" class="form-control" id="Age" name="Age" value="@Model.Age">
+                    <br />
+                </div>
+                <div class="form-group col-md-12">
+                    <label for="Job">Job</label>
+                    <input type="text" class="form-control" id="Job" name="Job" value="@Model.Job">
+                    <br />
+                </div>
+
+            </div>
+            <button type="submit" class="btn btn-primary">Edit Character</button>
+    </form>
+</div>
+
+
+
