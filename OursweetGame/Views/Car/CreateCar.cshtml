@@ -1,0 +1,14 @@
+﻿@model OursweetGame.Models.Car
+
+<h2>CreateCar</h2>
+
+<form action="/Car/CreateCar" method="post">
+
+    Color: <input type="text" name="Color" value="@Model.Color" />
+    Made: <input type="text" name="Make" value="Make" />
+    Year: <input type="number" name="Year" value="Year" />
+
+    <input type="submit" value="Create Car" />
+
+</form>
+
