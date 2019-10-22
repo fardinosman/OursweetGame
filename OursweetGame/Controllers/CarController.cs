@@ -22,14 +22,34 @@ namespace OursweetGame.Controllers
             return View(car);
         }
         [HttpPost]
-        public ActionResult CreateCar(string Color, string Make, int Year)
+        public ActionResult CreateCar(Car c)
         {
             Car car = new Car();
-
-            car.Color = Color;
-            car.Make = Make;
-            car.Year = Year;
-            return null;
+            int currentYear = DateTime.Now.Year;
+            int age =  currentYear - c.Year;
+         
+        
+            if (age > 50) 
+            {
+                c.Make = "OLD " + c.Make;
+                
+            }
+            if (age >10 && age<20)
+            {
+                c.Make = "Mediom " + c.Make;
+            }
+            if (age <=5)
+            {
+                c.Make = "New " + c.Make;
+            }
+            car.Make = c.Make;
+            car.Color = c.Color;
+            car.Year = c.Year;
+           
+            
+          
+            return View("DisplayCar",null,car);
         }
+      
     }
 }

@@ -12,7 +12,7 @@ namespace OursweetGame.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Person
+    public partial class Character
     {
         public int ID { get; set; }
         public string Name { get; set; }

@@ -1,4 +1,4 @@
-﻿
+﻿@model OursweetGame.Models.Person
 
 
 <h1>Enter your information below</h1>
@@ -17,6 +17,13 @@
 
 
     </form>*@
+@*@Html.TextBoxFor(m=> Model.)*@
+
+Job : @Html.TextBoxFor(m => Model.Job)<br />
+Age : @Html.TextBoxFor(m => Model.Age)<br />
+Name : @Html.TextBoxFor(m => Model.Name)<br />
+
+
 
 
 <div class="jumbotron">
@@ -25,18 +32,18 @@
         <div class="form-row">
             <div class="form-group col-md-12">
                 <label for="Name">Name</label>
-                <input type="text" class="form-control" id="Name" name="Name">
+                @Html.TextBoxFor(m => Model.Job)
                 <br />
             </div>
 
             <div class="form-group col-md-12">
                 <label for="Age">Age</label>
-                <input type="number" class="form-control" id="Age" name="Age">
+                @Html.TextBoxFor(m => Model.Age)
                 <br />
             </div>
             <div class="form-group col-md-12">
                 <label for="Job">Job</label>
-                <input type="text" class="form-control" id="Job" name="Job">
+                @Html.TextBoxFor(m => Model.Name)
                 <br />
             </div>
 

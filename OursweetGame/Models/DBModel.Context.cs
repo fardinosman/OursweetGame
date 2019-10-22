@@ -25,6 +25,9 @@ namespace OursweetGame.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Character> Character { get; set; }
+        public virtual DbSet<PersonsWeapons> PersonsWeapons { get; set; }
+        public virtual DbSet<Weapons> Weapons { get; set; }
         public virtual DbSet<Person> Person { get; set; }
     }
 }

@@ -4,7 +4,23 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="GameDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="GameDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Character">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="Job" Type="varchar" MaxLength="50" />
+          <Property Name="Age" Type="int" />
+          <Property Name="Towel" Type="varchar" MaxLength="50" />
+          <Property Name="Race" Type="varchar" MaxLength="50" />
+          <Property Name="HP" Type="int" />
+          <Property Name="Level" Type="varchar" MaxLength="50" />
+          <Property Name="Spell" Type="varchar" MaxLength="50" />
+          <Property Name="MP" Type="varchar" MaxLength="50" />
+          <Property Name="Gold" Type="int" />
+        </EntityType>
         <EntityType Name="Person">
           <Key>
             <PropertyRef Name="ID" />
@@ -17,17 +33,97 @@
           <Property Name="Race" Type="varchar" MaxLength="50" />
           <Property Name="HP" Type="int" />
           <Property Name="Level" Type="varchar" MaxLength="50" />
-          <Property Name="Weapon" Type="varchar" MaxLength="50" />
           <Property Name="Spell" Type="varchar" MaxLength="50" />
+          <Property Name="MP" Type="varchar" MaxLength="50" />
+          <Property Name="Gold" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'GameDatabase.dbo.PersonsWeapons' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="PersonsWeapons">
+          <Key>
+            <PropertyRef Name="PersonID" />
+          </Key>
+          <Property Name="PersonID" Type="int" Nullable="false" />
+          <Property Name="WeaponID" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'GameDatabase.dbo.Weapons' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Weapons">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Damage" />
+            <PropertyRef Name="Price" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" />
+          <Property Name="Damage" Type="int" Nullable="false" />
+          <Property Name="Price" Type="int" Nullable="false" />
         </EntityType>
         <EntityContainer Name="GameDatabaseModelStoreContainer">
+          <EntitySet Name="Character" EntityType="Self.Character" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Person" EntityType="Self.Person" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PersonsWeapons" EntityType="Self.PersonsWeapons" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [PersonsWeapons].[PersonID] AS [PersonID], 
+    [PersonsWeapons].[WeaponID] AS [WeaponID]
+    FROM [dbo].[PersonsWeapons] AS [PersonsWeapons]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Weapons" EntityType="Self.Weapons" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Weapons].[ID] AS [ID], 
+    [Weapons].[Name] AS [Name], 
+    [Weapons].[Type] AS [Type], 
+    [Weapons].[Damage] AS [Damage], 
+    [Weapons].[Price] AS [Price]
+    FROM [dbo].[Weapons] AS [Weapons]</DefiningQuery>
+          </EntitySet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="GameDatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="GameDatabaseEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Character" EntityType="GameDatabaseModel.Character" />
+          <EntitySet Name="PersonsWeapons" EntityType="GameDatabaseModel.PersonsWeapons" />
+          <EntitySet Name="Weapons" EntityType="GameDatabaseModel.Weapons" />
+          <EntitySet Name="Person" EntityType="GameDatabaseModel.Person" />
+        </EntityContainer>
+        <EntityType Name="Character">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Job" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Age" Type="Int32" />
+          <Property Name="Towel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Race" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="HP" Type="Int32" />
+          <Property Name="Level" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Spell" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Gold" Type="Int32" />
+        </EntityType>
+        <EntityType Name="PersonsWeapons">
+          <Key>
+            <PropertyRef Name="PersonID" />
+          </Key>
+          <Property Name="PersonID" Type="Int32" Nullable="false" />
+          <Property Name="WeaponID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Weapons">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Damage" />
+            <PropertyRef Name="Price" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Damage" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Int32" Nullable="false" />
+        </EntityType>
         <EntityType Name="Person">
           <Key>
             <PropertyRef Name="ID" />
@@ -40,31 +136,66 @@
           <Property Name="Race" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="HP" Type="Int32" />
           <Property Name="Level" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Weapon" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Spell" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Gold" Type="Int32" />
         </EntityType>
-        <EntityContainer Name="GameDatabaseEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Person" EntityType="Self.Person" />
-        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="GameDatabaseModelStoreContainer" CdmEntityContainer="GameDatabaseEntities">
+          <EntitySetMapping Name="Character">
+            <EntityTypeMapping TypeName="GameDatabaseModel.Character">
+              <MappingFragment StoreEntitySet="Character">
+                <ScalarProperty Name="Gold" ColumnName="Gold" />
+                <ScalarProperty Name="MP" ColumnName="MP" />
+                <ScalarProperty Name="Spell" ColumnName="Spell" />
+                <ScalarProperty Name="Level" ColumnName="Level" />
+                <ScalarProperty Name="HP" ColumnName="HP" />
+                <ScalarProperty Name="Race" ColumnName="Race" />
+                <ScalarProperty Name="Towel" ColumnName="Towel" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="Job" ColumnName="Job" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PersonsWeapons">
+            <EntityTypeMapping TypeName="GameDatabaseModel.PersonsWeapons">
+              <MappingFragment StoreEntitySet="PersonsWeapons">
+                <ScalarProperty Name="WeaponID" ColumnName="WeaponID" />
+                <ScalarProperty Name="PersonID" ColumnName="PersonID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Weapons">
+            <EntityTypeMapping TypeName="GameDatabaseModel.Weapons">
+              <MappingFragment StoreEntitySet="Weapons">
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Damage" ColumnName="Damage" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Person">
             <EntityTypeMapping TypeName="GameDatabaseModel.Person">
               <MappingFragment StoreEntitySet="Person">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Job" ColumnName="Job" />
-                <ScalarProperty Name="Age" ColumnName="Age" />
-                <ScalarProperty Name="Towel" ColumnName="Towel" />
-                <ScalarProperty Name="Race" ColumnName="Race" />
-                <ScalarProperty Name="HP" ColumnName="HP" />
-                <ScalarProperty Name="Level" ColumnName="Level" />
-                <ScalarProperty Name="Weapon" ColumnName="Weapon" />
+                <ScalarProperty Name="Gold" ColumnName="Gold" />
+                <ScalarProperty Name="MP" ColumnName="MP" />
                 <ScalarProperty Name="Spell" ColumnName="Spell" />
+                <ScalarProperty Name="Level" ColumnName="Level" />
+                <ScalarProperty Name="HP" ColumnName="HP" />
+                <ScalarProperty Name="Race" ColumnName="Race" />
+                <ScalarProperty Name="Towel" ColumnName="Towel" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="Job" ColumnName="Job" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

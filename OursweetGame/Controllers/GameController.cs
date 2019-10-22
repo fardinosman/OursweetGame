@@ -17,18 +17,19 @@ namespace OursweetGame.Controllers
         }
         public ActionResult CreateCharacter()
         {
-            return View();
+            Person p = new Person();
+            return View(p);
         }
         [HttpPost]
-        public ActionResult ProcessCreateCharacter(string Name, int Age,string Job)
+        public ActionResult ProcessCreateCharacter(Person person)
         {
-            string character = Name;
-            //listPerson.Add(new Person { Name=Name, Age=Age, Job=Job });
-            Person person= new Person();
-            person.Name = Name;
-            person.Job = Job;
-            ViewBag.Age = Age.ToString();
-            ViewBag.Job = Job;
+            //string character = Name;
+            ////listPerson.Add(new Person { Name=Name, Age=Age, Job=Job });
+            //Person person= new Person();
+            //person.Name = Name;
+            //person.Job = Job;
+            //ViewBag.Age = Age.ToString();
+            //ViewBag.Job = Job;
 
             GameDatabaseEntities gameDatabaseEntities = new GameDatabaseEntities();
             gameDatabaseEntities.Person.Add(person);
@@ -49,34 +50,8 @@ namespace OursweetGame.Controllers
 
            
         }
-
-     
-        public ActionResult KillCharacter(int ID)
-        {
-            GameDatabaseEntities db = new GameDatabaseEntities();
-            var personKill = db.Person.Where(x => x.ID == ID).FirstOrDefault();
-           
-            //var personFound = db.Person.Find(ID);
-          
-
-            if (personKill != null)
-            {
-                db.Person.Remove(personKill);
-                db.SaveChanges();
-            }
-            else
-            {
-                return RedirectToAction("NoUser");
-            }
-
-
-
-            return View("KillCharacter");
-
-           
-        }
-       // EditCharacter
-      
+       
+      // EditCharacter    
         public ActionResult EditCharacter(int ID)
         {
             GameDatabaseEntities gameDatabaseEntities = new GameDatabaseEntities();
@@ -110,6 +85,32 @@ namespace OursweetGame.Controllers
 
             return View();
         }
+     
+        public ActionResult KillCharacter(int ID)
+        {
+            GameDatabaseEntities db = new GameDatabaseEntities();
+            var personKill = db.Person.Where(x => x.ID == ID).FirstOrDefault();
+
+            //var personFound = db.Person.Find(ID);
+
+
+            if (personKill != null)
+            {
+                db.Person.Remove(personKill);
+                db.SaveChanges();
+            }
+            else
+            {
+                return RedirectToAction("NoUser");
+            }
+
+
+
+            return RedirectToAction("DisplayCharacter");
+
+
+        }
+      
         [HttpPost]
         public ActionResult KillCharacter(string Name)
         {
@@ -126,10 +127,6 @@ namespace OursweetGame.Controllers
             {
                 return RedirectToAction("NoUser");
             }
-
-
-
-
 
             return RedirectToAction("DisplayCharacter");
             //Database

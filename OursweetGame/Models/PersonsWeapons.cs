@@ -12,18 +12,9 @@ namespace OursweetGame.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Person
+    public partial class PersonsWeapons
     {
-        public int ID { get; set; }
-        public string Name { get; set; }
-        public string Job { get; set; }
-        public Nullable<int> Age { get; set; }
-        public string Towel { get; set; }
-        public string Race { get; set; }
-        public Nullable<int> HP { get; set; }
-        public string Level { get; set; }
-        public string Spell { get; set; }
-        public string MP { get; set; }
-        public Nullable<int> Gold { get; set; }
+        public int PersonID { get; set; }
+        public Nullable<int> WeaponID { get; set; }
     }
 }

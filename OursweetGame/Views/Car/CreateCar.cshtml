@@ -2,13 +2,18 @@
 
 <h2>CreateCar</h2>
 
-<form action="/Car/CreateCar" method="post">
+<div class="jumbotron">
+    <form action="/Car/CreateCar" method="post">
 
-    Color: <input type="text" name="Color" value="@Model.Color" />
-    Made: <input type="text" name="Make" value="Make" />
-    Year: <input type="number" name="Year" value="Year" />
+        Color: <input type="text" name="Color" value="@Model.Color" />
+        <br />
+        Made: <input type="text" name="Make" value="@Model.Make" />
+        <br />
+        Year: <input type="number" name="Year" value="@Model.Year" />
+        <br />
+        <input type="submit" value="Create Car" />
 
-    <input type="submit" value="Create Car" />
+    </form>
+</div>
 
-</form>
 
