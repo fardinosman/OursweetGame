@@ -13,10 +13,10 @@ namespace OursweetGame.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class GameDatabaseEntities : DbContext
+    public partial class GameDatabaseEntities1 : DbContext
     {
-        public GameDatabaseEntities()
-            : base("name=GameDatabaseEntities")
+        public GameDatabaseEntities1()
+            : base("name=GameDatabaseEntities1")
         {
         }
     
@@ -26,8 +26,9 @@ namespace OursweetGame.Models
         }
     
         public virtual DbSet<Character> Character { get; set; }
-        public virtual DbSet<PersonsWeapons> PersonsWeapons { get; set; }
-        public virtual DbSet<Weapons> Weapons { get; set; }
+        public virtual DbSet<Item> Item { get; set; }
         public virtual DbSet<Person> Person { get; set; }
+        public virtual DbSet<Weapons> Weapons { get; set; }
+        public virtual DbSet<PersonsWeapons> PersonsWeapons { get; set; }
     }
 }

@@ -136,33 +136,37 @@
     </Compile>
     <Compile Include="Models\Car.cs" />
     <Compile Include="Models\Character.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
+      <DependentUpon>Model22.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DBModel.Context.cs">
+    <Compile Include="Models\Item.cs">
+      <DependentUpon>Model22.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model22.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DBModel.Context.tt</DependentUpon>
+      <DependentUpon>Model22.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DBModel.cs">
+    <Compile Include="Models\Model22.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DBModel.tt</DependentUpon>
+      <DependentUpon>Model22.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DBModel.Designer.cs">
+    <Compile Include="Models\Model22.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DBModel.edmx</DependentUpon>
+      <DependentUpon>Model22.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Person.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
+      <DependentUpon>Model22.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PersonsWeapons.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
+      <DependentUpon>Model22.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Weapons.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
+      <DependentUpon>Model22.tt</DependentUpon>
     </Compile>
     <Compile Include="Note.cs" />
+    <Compile Include="PlayerCharacter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -174,24 +178,24 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\DBModel.Context.tt">
+    <Content Include="Models\Model22.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DBModel.edmx</DependentUpon>
-      <LastGenOutput>DBModel.Context.cs</LastGenOutput>
+      <DependentUpon>Model22.edmx</DependentUpon>
+      <LastGenOutput>Model22.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\DBModel.tt">
+    <Content Include="Models\Model22.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DBModel.edmx</DependentUpon>
-      <LastGenOutput>DBModel.cs</LastGenOutput>
+      <DependentUpon>Model22.edmx</DependentUpon>
+      <LastGenOutput>Model22.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\DBModel.edmx">
+    <EntityDeploy Include="Models\Model22.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>DBModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>Model22.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\DBModel.edmx.diagram">
-      <DependentUpon>DBModel.edmx</DependentUpon>
+    <Content Include="Models\Model22.edmx.diagram">
+      <DependentUpon>Model22.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -229,6 +233,7 @@
     <Content Include="Views\Car\Index.cshtml" />
     <Content Include="Views\Car\CreateCar.cshtml" />
     <Content Include="Views\Car\DisplayCar.cshtml" />
+    <Content Include="Views\Home\RoasterPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

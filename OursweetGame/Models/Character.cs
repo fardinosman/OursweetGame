@@ -14,6 +14,12 @@ namespace OursweetGame.Models
     
     public partial class Character
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Character()
+        {
+            this.Weapons = new HashSet<Weapons>();
+        }
+    
         public int ID { get; set; }
         public string Name { get; set; }
         public string Job { get; set; }
@@ -25,5 +31,8 @@ namespace OursweetGame.Models
         public string Spell { get; set; }
         public string MP { get; set; }
         public Nullable<int> Gold { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Weapons> Weapons { get; set; }
     }
 }

@@ -1,0 +1,19 @@
+﻿@model  List<OursweetGame.Models.Person>
+
+
+@foreach (var item in Model)
+{
+    <ul class="list-group">
+        <li class="list-group-item list-group-item-success col-md-2">Game Characters</li>
+
+        <li class="list-group-item list-group-item col-md-1">@item.ID </li>
+
+
+        <li class="list-group-item list-group-item col-md-1">@item.Name </li>
+        <li class="list-group-item list-group-item col-md-1">@item.Job </li>
+        <li class="list-group-item list-group-item col-md-1">@item.Age </li>
+        
+
+    </ul>
+}
+
