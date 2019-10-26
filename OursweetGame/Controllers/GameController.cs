@@ -137,15 +137,42 @@ namespace OursweetGame.Controllers
         }
         public ActionResult Arena()
         {
-            var player1 = new PlayerCharacter();
-            var player2 = new PlayerCharacter();
+            var player1 = new PlayerCharacter
+            {
+                Job = "Paladin",
+                HP = 15,
+                Weapon = "Mace",
+                Heals = 1
+            };
 
-            player1.Job = "Warior";
-            player1.HP = 30;
-            player2.Job = "Wizard";
-            player2.HP = 15;
+            var player2 = new PlayerCharacter
+            {
+                Job = "Ranger",
+                HP = 15,
+                Weapon = "Bow",
+                Heals = 1
+            };
 
-            player1.Attack(player2, 5);
+            do
+            {
+                player1.Attack(player2);
+                player2.Attack(player1);
+            } while (player1.HP> 0 && player2.HP>0);
+            string winner = "";
+            if (player1.HP > 0)
+            {
+                winner = "Player1";
+            }
+            else if (player1.HP<1 && player2.HP <1)
+            {
+                winner = "Draw";
+            }
+            else
+            {
+                winner = "player2";
+            }
+            ViewBag.Winner = winner;
+          
             return View();
         }
     }

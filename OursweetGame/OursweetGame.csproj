@@ -234,6 +234,7 @@
     <Content Include="Views\Car\CreateCar.cshtml" />
     <Content Include="Views\Car\DisplayCar.cshtml" />
     <Content Include="Views\Home\RoasterPage.cshtml" />
+    <Content Include="Views\Game\Arena.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
