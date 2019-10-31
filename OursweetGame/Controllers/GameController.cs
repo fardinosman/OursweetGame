@@ -11,7 +11,7 @@ namespace OursweetGame.Controllers
     public class GameController : Controller
     {
 
-        public ActionResult Index()
+        public ActionResult Index()//
         {
             return View();
 
